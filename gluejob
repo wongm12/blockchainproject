@@ -254,162 +254,19 @@ def upload_file(file_name, bucket, object_name=None):
 def main():
     response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["bored ape yacht club"])
     file = make_csv_of_NFT_tokens("bored ape yacht club", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
+    upload_file(file.name, 'bucketname', 'test/tokens/'+file.name)
     owners_num_of_tokens = get_distribution_of_owners(response)
     print("Get addresses for that collection (sorting by value)")
     sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
     print(sorted_owners)
     file = make_csv_of_NFT_wallets_balance_general("bored ape yacht club", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
+    upload_file(file.name, 'bucketname', 'test/wallet_balance_general/'+file.name)
     for i in sorted_owners:
         print(i)
         address = i[0]
         times_balances_data_list = mainnet_get_transactions(address)
         file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
-    
-    response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["cryptopunks"])
-    file = make_csv_of_NFT_tokens("cryptopunks", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
-    owners_num_of_tokens = get_distribution_of_owners(response)
-    print("Get addresses for that collection (sorting by value)")
-    sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
-    print(sorted_owners)
-    file = make_csv_of_NFT_wallets_balance_general("cryptopunks", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
-    for i in sorted_owners:
-        print(i)
-        address = i[0]
-        times_balances_data_list = mainnet_get_transactions(address)
-        file =make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
-    
-    response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["mutant ape yacht club"])
-    file = make_csv_of_NFT_tokens("mutant ape yacht club", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
-    owners_num_of_tokens = get_distribution_of_owners(response)
-    print("Get addresses for that collection (sorting by value)")
-    sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
-    print(sorted_owners)
-    file = make_csv_of_NFT_wallets_balance_general("mutant ape yacht club", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
-    for i in sorted_owners:
-        print(i)
-        address = i[0]
-        times_balances_data_list = mainnet_get_transactions(address)
-        file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
-    
-    response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["otherdeed for otherside"])
-    file = make_csv_of_NFT_tokens("otherdeed for otherside", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
-    owners_num_of_tokens = get_distribution_of_owners(response)
-    print("Get addresses for that collection (sorting by value)")
-    sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
-    print(sorted_owners)
-    file = make_csv_of_NFT_wallets_balance_general("otherdeed for otherside", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
-    for i in sorted_owners:
-        print(i)
-        address = i[0]
-        times_balances_data_list = mainnet_get_transactions(address)
-        file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
-    
-    response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["art blocks curated"])
-    file = make_csv_of_NFT_tokens("art blocks curated", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
-    owners_num_of_tokens = get_distribution_of_owners(response)
-    print("Get addresses for that collection (sorting by value)")
-    sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
-    print(sorted_owners)
-    file = make_csv_of_NFT_wallets_balance_general("art blocks curated", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
-    for i in sorted_owners:
-        print(i)
-        address = i[0]
-        times_balances_data_list = mainnet_get_transactions(address)
-        file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
-    
-    response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["azuki"])
-    file = make_csv_of_NFT_tokens("azuki", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
-    owners_num_of_tokens = get_distribution_of_owners(response)
-    print("Get addresses for that collection (sorting by value)")
-    sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
-    print(sorted_owners)
-    file = make_csv_of_NFT_wallets_balance_general("azuki", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
-    for i in sorted_owners:
-        print(i)
-        address = i[0]
-        times_balances_data_list = mainnet_get_transactions(address)
-        file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
-    
-    response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["clone x x-takashi murakami"])
-    file = make_csv_of_NFT_tokens("clone x x-takashi murakami", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
-    owners_num_of_tokens = get_distribution_of_owners(response)
-    print("Get addresses for that collection (sorting by value)")
-    sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
-    print(sorted_owners)
-    file = make_csv_of_NFT_wallets_balance_general("clone x x-takashi murakami", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
-    for i in sorted_owners:
-        print(i)
-        address = i[0]
-        times_balances_data_list = mainnet_get_transactions(address)
-        file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
-    
-    response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["decentraland"])
-    file = make_csv_of_NFT_tokens("decentraland", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
-    owners_num_of_tokens = get_distribution_of_owners(response)
-    print("Get addresses for that collection (sorting by value)")
-    sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
-    print(sorted_owners)
-    file = make_csv_of_NFT_wallets_balance_general("decentraland", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
-    for i in sorted_owners:
-        print(i)
-        address = i[0]
-        times_balances_data_list = mainnet_get_transactions(address)
-        file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
-    
-    response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["The Sandbox"])
-    file = make_csv_of_NFT_tokens("The Sandbox", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
-    owners_num_of_tokens = get_distribution_of_owners(response)
-    print("Get addresses for that collection (sorting by value)")
-    sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
-    print(sorted_owners)
-    file = make_csv_of_NFT_wallets_balance_general("The Sandbox", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
-    for i in sorted_owners:
-        print(i)
-        address = i[0]
-        times_balances_data_list = mainnet_get_transactions(address)
-        file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
-    
-    response = moralis_get_nft_owners(TOP_TEN_NFT_COLLECTIONS["moonbirds"])
-    file = make_csv_of_NFT_tokens("moonbirds", response)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/tokens/'+file.name)
-    owners_num_of_tokens = get_distribution_of_owners(response)
-    print("Get addresses for that collection (sorting by value)")
-    sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
-    print(sorted_owners)
-    file = make_csv_of_NFT_wallets_balance_general("moonbirds", sorted_owners)
-    upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_general/'+file.name)
-    for i in sorted_owners:
-        print(i)
-        address = i[0]
-        times_balances_data_list = mainnet_get_transactions(address)
-        file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'blockchainproject-generaldata', 'test/wallet_balance_over_time/'+file.name)
+        upload_file(file.name, 'bucketname', 'test/wallet_balance_over_time/'+file.name)
+   
 
 main()
