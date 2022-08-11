@@ -3,7 +3,7 @@ import os # To use get_size() function to find out csv file size
 import csv # creating the files to upload
 import time # For forcing stops (time.sleep()) between API requests to avoid limit
 import json # For interpreting json responses from API calls
-import boto3 # To get API Keys from Secrets manager and put objects in an S3 bucket
+import boto3 # To get API Keys from Secrets manager and put objects in a bucket
 import logging
 from requests import get # For Etherscan and Moralis API calls
 from requests.auth import HTTPBasicAuth # For Moralis API calls
@@ -125,8 +125,8 @@ def make_wallet_balance_over_time_csv(wallet_address, times_balances_data_list):
 # -------------------------- Moralis API Calls -------------------------------#
 def moralis_get_nft_owners(contract_address, **kwargs):
     url = 'https://deep-index.moralis.io/api/v2/nft/' + contract_address + '/owners?chain=eth&format=decimal'
-    headers = {'Accept': 'application/json', 'x-api-key': 'RA5E6jx6IdGbOfCLccijReUXvNNywzSTjuMMCqTRtgkDS9zr0gg00Nna9NyS9ymt'}
-    auth = HTTPBasicAuth('x-api-key', 'RA5E6jx6IdGbOfCLccijReUXvNNywzSTjuMMCqTRtgkDS9zr0gg00Nna9NyS9ymt')
+    headers = {'Accept': 'application/json', 'x-api-key': 'api key here'}
+    auth = HTTPBasicAuth('x-api-key', 'api key here')
 
     req = get(url, headers=headers, auth=auth)
     req = req.json()
@@ -136,8 +136,8 @@ def moralis_get_nft_owners(contract_address, **kwargs):
 
     while( (req['page'] * req['page_size']) < 1000): # limit to 1,000 records for now
         url = 'https://deep-index.moralis.io/api/v2/nft/' + contract_address + '/owners?chain=eth&format=decimal&cursor=' + cursor
-        headers = {'Accept': 'application/json', 'x-api-key': 'RA5E6jx6IdGbOfCLccijReUXvNNywzSTjuMMCqTRtgkDS9zr0gg00Nna9NyS9ymt'}
-        auth = HTTPBasicAuth('x-api-key', 'RA5E6jx6IdGbOfCLccijReUXvNNywzSTjuMMCqTRtgkDS9zr0gg00Nna9NyS9ymt')
+        headers = {'Accept': 'application/json', 'x-api-key': 'api key here'}
+        auth = HTTPBasicAuth('x-api-key', 'api key here')
         time.sleep(1.1) # needed to not hit request rate limit
         req = get(url, headers=headers, auth=auth)
         req = req.json()
@@ -260,13 +260,13 @@ def main():
     sorted_owners = sorted(owners_num_of_tokens.items(), key=lambda x: x[1], reverse=True)
     print(sorted_owners)
     file = make_csv_of_NFT_wallets_balance_general("bored ape yacht club", sorted_owners)
-    upload_file(file.name, 'bucketname', 'test/wallet_balance_general/'+file.name)
+    upload_file(file.name, 'bucketname', 'subfolder here/'+file.name)
     for i in sorted_owners:
         print(i)
         address = i[0]
         times_balances_data_list = mainnet_get_transactions(address)
         file = make_wallet_balance_over_time_csv(address, times_balances_data_list)
-        upload_file(file.name, 'bucketname', 'test/wallet_balance_over_time/'+file.name)
+        upload_file(file.name, 'bucketname', 'subfolder here/'+file.name)
    
 
 main()
