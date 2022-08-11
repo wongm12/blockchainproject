@@ -584,8 +584,8 @@ API_KEY = get_etherscan_api_key()
 MAINNET_BASE_URL = "https://api.etherscan.io/api"
 RINKEBY_BASE_URL = "https://api-rinkeby.etherscan.io/api"
 ETHER_VALUE = 10 ** 18
-MAINNET_ADDRESS = "0x3D5202A0564De9B05eCd07C955BcCA964585ea03" #address of desired wallet
-RINKEBY_ADDRESS = "0x483914Cbc70046e34002bA8e495Bd4B427470902" #address of desired wallet
+MAINNET_ADDRESS = "" #address of desired wallet
+RINKEBY_ADDRESS = "" #address of desired wallet
 
 TOP_TEN_NFT_COLLECTIONS = {
     'bored ape yacht club': '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d', 
